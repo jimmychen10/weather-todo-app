@@ -1,0 +1,36 @@
+body{
+    background-color: #4E8098;
+
+}
+
+h1 {
+    text-align: center;
+    color: lightgray;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.mainWeather{
+    height: 300px;
+    width: 300px;
+    background: white;
+    margin: 0px auto;
+    border-radius: 100%;
+}
+
+.mainWeather img{
+    height: 75%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+h2{
+    color: #0B5351;
+    text-align: center;
+    margin: 0px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+span{
+    font-size: 100px;
+}
