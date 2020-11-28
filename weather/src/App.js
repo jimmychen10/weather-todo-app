@@ -1,10 +1,12 @@
-
-
-
 import React,{useState,useEffect} from "react"
 import axios from "axios"
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./Styles/Weather.css"
+import {Form,Button} from 'react-bootstrap';
+import "./Styles/App.css"
 import WeatherDisplay from "./Components/WeatherDisplay.js"
+import UserLocation from './Components/UserLocation.js'
+import {geolocated} from 'react-geolocated';
 
 
 export default function App(){
@@ -14,21 +16,13 @@ export default function App(){
   const [weather,setWeather] = useState()
   const [city, setCity] = useState("Tokyo")
   const [currentCity,setCurrentCity] = useState(city)
+  const [country,setCountry] = useState("")
+  const [currentCountry,setCurrentCountry] = useState("Japan")
   const [weatherData,setWeatherData] = useState({})
 
-  // function getWeatherData(){
-  //   setCurrentCity(city)
-  //   console.log(city)
-  //   axios.get("http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+weatherId)
-  //   .then(res => { 
-  //     setWeather(res.data.weather[0].description) 
-  //   })
-  //   .catch(console.log);
-  // }
-  // https://api.weatherbit.io/v2.0/forecast/daily?days7&city=Raleigh,NC&key=d733b204b23441d5934886d9e788969e
+
   function getApiData(){
-    // const apiData = axios.get("http://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+weatherId)
-    const apiData = axios.get("https://api.weatherbit.io/v2.0/forecast/daily?days7&city="+city+"&key="+weatherId)
+    const apiData = axios.get("https://api.weatherbit.io/v2.0/forecast/daily?units=I&days=7&city="+city+"&country="+country+"&key="+weatherId)
       if (apiData.ok){
         throw new ('HTTP error! status: ', apiData)
       }
@@ -39,32 +33,17 @@ export default function App(){
       }
   }
 
-  // async function getApiData(){
-  //   const apiData =" "; 
-  //   await axios.get("http://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+weatherId)
-  //   .then(res =>{
-  //     apiData = res.data
-  //   })
-  //    return apiData
-  // }
-
    function getWeatherData(){
-
+      setCountry("")
      getApiData().then( blob =>{
-      
-      
-      // console.log(res.data.list[0].weather[0].description)
       setWeatherData(blob.data)
-       // works
-      // weatherData.map(p =>{
-      //   console.log(p)
-      // })
       setCurrentCity(blob.data.city_name)
-      setWeather(blob.data.data[0].weather.description) 
+      setCurrentCountry(blob.data.country_code)
       
+      // setWeather(blob.data.data[0].weather.description) 
       setLoadingApi(false)
       }
-      )  
+    )  
 
   }
 
@@ -85,7 +64,6 @@ export default function App(){
     console.group(e)
   }
 
-// setLoadingApi(true)
   
 if(loadingApi){
   return <div> <h1>loading</h1></div>
@@ -94,24 +72,29 @@ else{
 
    return(
     
-    <div>
+    <div className="backGround" >
+      <h1>{currentCity},{currentCountry}</h1>
 
-{/*       
-      <h1>city : {currentCity}</h1>
-      <h1>{weather}</h1> */}
-      
-      
-      <form onSubmit={handleChange}>
-      <input type="text" placeholder ="city" value = {city} onChange ={e => setCity(e.target.value)} />
-        <button type="submit" >
-          Search
-        </button>
-      </form>
-      {console.log("displaying...")}
-      {console.log({weather})}    
-    {console.log(loadingApi)}
+        <div >
+          <span >
+        <Form onSubmit={handleChange} >
+          <Form.Group controlId="">
+          <Form.Row className="d-flex justify-content-center">
+            <Form.Control className=" form" type="text" placeholder="Enter City" value = {city} onChange ={e => setCity(e.target.value)} required/>
+            <Form.Control className=" form" type="text" placeholder="Optional: Enter Country" value = {country}  onChange ={e => setCountry(e.target.value)}/>
+            
+            <Button variant="primary" type="submit" className="">
+            Submit
+            </Button>
+
+            </Form.Row>
+          </Form.Group>
+          </Form>
+          </span>
+          </div>
+
      <WeatherDisplay weatherData = {weatherData}/>
-      
+      {/* <UserLocation/> */}
 
     </div>
   )

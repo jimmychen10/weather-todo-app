@@ -34,3 +34,46 @@ h2{
 span{
     font-size: 100px;
 }
+
+.warning{
+    display: flex;
+    justify-content: space-around;
+
+    width: 200px;
+    margin: 0 auto;
+    height: 45px;
+    padding: 5px;
+    border: solid black 3px;
+    border-radius: 5%;
+}
+
+.icon{
+    height: 100%;
+        background-color: OrangeRed;
+}
+
+.icon img{
+    height: 100%;
+}
+
+.warningText{
+    /* background-color: violet; */
+}
+
+/* .weathers{
+    background-color:white;
+    margin: 0 auto;
+    height: 200px;
+    width: 1500px;
+} */
+
+.day{
+    background-color: tomato;
+    height: 200px;
+    width: 200px;
+}
+
+.day h2{
+    text-align: center;
+    color: black;
+}

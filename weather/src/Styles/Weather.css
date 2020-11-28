@@ -1,0 +1,39 @@
+.form{
+    width: 50%;
+
+}
+
+@media screen and (min-width:500px) {
+    .form{
+        width: 253px;
+    }
+}
+
+.weatherBox{
+    background-color: dodgerblue;
+    display: inline-block;
+    
+    
+}
+.weatherBox h2{
+    text-align: center;
+}
+.weatherBox img{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.weeklyWeatherDisplay{
+    background: tomato;
+    font-size: 30% ;
+    margin: 5vw;
+}
+.weeklyWeatherDisplay h2{
+    font-size: 15px ;
+}
+
+.weeklyWeatherDisplay img{
+    height: 50px; 
+}
+
