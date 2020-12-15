@@ -14,22 +14,21 @@ export default function App(){
   const weatherId ="d733b204b23441d5934886d9e788969e"
   const [loadingApi, setLoadingApi] = useState(true)
   const [weather,setWeather] = useState()
-  const [city, setCity] = useState("Tokyo")
+  const [city, setCity] = useState()
   const [currentCity,setCurrentCity] = useState(city)
-  const [country,setCountry] = useState("")
-  const [currentCountry,setCurrentCountry] = useState("Japan")
+  const [country,setCountry] = useState()
+  const [currentCountry,setCurrentCountry] = useState()
   const [weatherData,setWeatherData] = useState({})
 
 
   function getApiData(){
     const apiData = axios.get("https://api.weatherbit.io/v2.0/forecast/daily?units=I&days=7&city="+city+"&country="+country+"&key="+weatherId)
-      if (apiData.ok){
+    console.log(apiData.ok)  
+    if (! apiData.ok){
         throw new ('HTTP error! status: ', apiData)
       }
-      else{  
-        
-        return  apiData
-        
+      else{         
+        return  apiData      
       }
   }
 
@@ -39,7 +38,6 @@ export default function App(){
       setWeatherData(blob.data)
       setCurrentCity(blob.data.city_name)
       setCurrentCountry(blob.data.country_code)
-      
       // setWeather(blob.data.data[0].weather.description) 
       setLoadingApi(false)
       }
@@ -92,8 +90,20 @@ else{
           </Form>
           </span>
           </div>
+          {console.log(weatherData != "undefined")}
 
-     <WeatherDisplay weatherData = {weatherData}/>
+          {/* {!loadingApi   &&
+      
+        <WeatherDisplay weatherData = {weatherData}/>
+      
+      } */}
+
+      { weatherData != "undefined" &&
+      
+        <WeatherDisplay weatherData = {weatherData}/>
+      
+      }
+     
       {/* <UserLocation/> */}
 
     </div>
