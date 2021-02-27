@@ -21,10 +21,12 @@ export default function WeatherDisplay(props){
                     <Weather icon = {temp.weather.icon} date = {temp.valid_date} temperature = {temp.temp} weatherDescription = {temp.weather.description}/>
                 </div>
             </div>
-
-            <div className="d-flex justify-content-center">
+            
+            <div className="d-flex justify-content-center week ">
                 {weekDisplay}
             </div>
         </div>
+
+        
     )
 } 

@@ -1,0 +1,26 @@
+{
+  "name": "weather-todo-app",
+  "version": "1.0.0",
+  "description": "React weather website that uses an weather api",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "axios": "^0.21.1",
+    "react-geolocated": "^3.1.0",
+    "react-bootstrap": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimmychen10/weather-todo-app.git"
+  },
+  "author": "Jimmy Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimmychen10/weather-todo-app/issues"
+  },
+  "homepage": "."
+}

@@ -4,4 +4,26 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 10% 10% 10% 40% 20%;
 }
+
+.search{
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+.searchedLocation{
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+.searchedLocation h1,h2{
+    text-align: center;
+}
+
+.displayWeather{
+    grid-column-start: 2;
+    grid-row-start: 4;
+}
+

@@ -6,7 +6,7 @@ import {Form,Button} from 'react-bootstrap';
 import "./Styles/App.css"
 import WeatherDisplay from "./Components/WeatherDisplay.js"
 import UserLocation from './Components/UserLocation.js'
-import {geolocated} from 'react-geolocated';
+// import {geolocated} from 'react-geolocated';
 
 
 export default function App(){
@@ -23,8 +23,9 @@ export default function App(){
 
   function getApiData(){
     const apiData = axios.get("https://api.weatherbit.io/v2.0/forecast/daily?units=I&days=7&city="+city+"&country="+country+"&key="+weatherId)
-    console.log(apiData.ok)  
-    if (! apiData.ok){
+    console.log(typeof(apiData.ok))  
+    if ( apiData.ok){
+        console.log("throw error works")
         throw new ('HTTP error! status: ', apiData)
       }
       else{         
@@ -34,12 +35,14 @@ export default function App(){
 
    function getWeatherData(){
       setCountry("")
-     getApiData().then( blob =>{
-      setWeatherData(blob.data)
-      setCurrentCity(blob.data.city_name)
-      setCurrentCountry(blob.data.country_code)
-      // setWeather(blob.data.data[0].weather.description) 
-      setLoadingApi(false)
+      
+      getApiData().then( blob =>{
+        setWeatherData(blob.data)
+        setCurrentCity(blob.data.city_name)
+        
+        setCurrentCountry(blob.data.country_code)
+        // setWeather(blob.data.data[0].weather.description) 
+        setLoadingApi(false)
       }
     )  
 
@@ -52,7 +55,6 @@ export default function App(){
     return () => {
       console.log("cleaned up");
     };
-
   },[])
 
 
@@ -64,16 +66,19 @@ export default function App(){
 
   
 if(loadingApi){
-  return <div> <h1>loading</h1></div>
+  return <div> <h1>loading</h1> </div>
 }
 else{
 
    return(
     
     <div className="backGround" >
-      <h1>{currentCity},{currentCountry}</h1>
+      <div className = "searchedLocation">
+      {weatherData !== "" ? <h1>{currentCity},{currentCountry}</h1>  :<h2>Please Type in a city or and the state </h2> }
 
-        <div >
+      </div>
+      
+        <div className ="search">
           <span >
         <Form onSubmit={handleChange} >
           <Form.Group controlId="">
@@ -90,19 +95,15 @@ else{
           </Form>
           </span>
           </div>
-          {console.log(weatherData != "undefined")}
+    <div className = "displayWeather">
+    { weatherData !== "" &&
+      
+      <WeatherDisplay weatherData = {weatherData}/>
+    
+    }
 
-          {/* {!loadingApi   &&
-      
-        <WeatherDisplay weatherData = {weatherData}/>
-      
-      } */}
+    </div>
 
-      { weatherData != "undefined" &&
-      
-        <WeatherDisplay weatherData = {weatherData}/>
-      
-      }
      
       {/* <UserLocation/> */}
 
