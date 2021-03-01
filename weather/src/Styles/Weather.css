@@ -10,11 +10,7 @@
 }
 
 .weatherBox{
-
     display: inline-block;
-    
-    
-    
 }
 .weatherBox h2{
     text-align: center;
@@ -29,10 +25,15 @@
 .week{
     border: 2px solid black;
     border-radius: 1%;
+    display: flex;
+    justify-self: center;
+    /* overflow: scroll; */
+    
 }
 .weeklyWeatherDisplay{
     font-size: 30% ;
-    width: 118px;
+    width: 14%;
+    min-width: 95px;
     margin: 1vw;
 }
 .weeklyWeatherDisplay h2{
@@ -44,5 +45,10 @@
     margin-left: auto;
     margin-right: auto;
     height: 50px; 
+}
+
+
+.forecast{
+
 }
 

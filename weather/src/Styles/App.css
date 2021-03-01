@@ -5,13 +5,17 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: grid;
-    grid-template-columns: 20% 60% 20%;
-    grid-template-rows: 10% 10% 10% 40% 20%;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 10% 10% 10% 40% auto;
 }
 
-.search{
+.search,.loading{
     grid-column-start: 2;
     grid-row-start: 3;
+}
+.loading h1{
+    text-align: center;
+
 }
 
 .searchedLocation{
@@ -25,5 +29,11 @@
 .displayWeather{
     grid-column-start: 2;
     grid-row-start: 4;
+    margin: 0px auto;
+    height: fit-content;
+    width: fit-content;
 }
+
+
+
 

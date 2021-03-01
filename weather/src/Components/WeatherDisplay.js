@@ -15,14 +15,14 @@ export default function WeatherDisplay(props){
         )
     })
     return(
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column d-inline overflow-scroll">
             <div  className="d-flex justify-content-center">
                 <div className="weatherBox">
                     <Weather icon = {temp.weather.icon} date = {temp.valid_date} temperature = {temp.temp} weatherDescription = {temp.weather.description}/>
                 </div>
             </div>
             
-            <div className="d-flex justify-content-center week ">
+            <div className=" week ">
                 {weekDisplay}
             </div>
         </div>

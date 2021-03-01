@@ -8,17 +8,16 @@ export default function Weather(props){
     function arrangeDate(){
         
         const dateFormated = props.date.split("-")
-        console.log(dateFormated)
         let date = dateFormated[2]
         let year = dateFormated[0]
         let month = dateFormated[1]
-        console.log(year+"-"+date+"-"+month)
+
         return(
              year+"-"+month+"-"+date
         )
 
     }
-    console.log("day: "+ day.getDay())
+
     return(
         <div>
             <h2>{ weekDates[day.getDay()]}</h2>

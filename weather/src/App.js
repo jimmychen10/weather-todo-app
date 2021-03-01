@@ -23,8 +23,8 @@ export default function App(){
 
   function getApiData(){
     const apiData = axios.get("https://api.weatherbit.io/v2.0/forecast/daily?units=I&days=7&city="+city+"&country="+country+"&key="+weatherId)
-    console.log(typeof(apiData.ok))  
-    if ( apiData.ok){
+
+    if ( apiData.ok ){
         console.log("throw error works")
         throw new ('HTTP error! status: ', apiData)
       }
@@ -66,7 +66,13 @@ export default function App(){
 
   
 if(loadingApi){
-  return <div> <h1>loading</h1> </div>
+  return (
+    <div className="backGround" >
+      <div className = "loading"> 
+        <h1>Loading</h1> 
+      </div>
+  </div>
+  )
 }
 else{
 
